@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+group 'Artisti'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.7.2'
+    compile 'org.springframework:spring-context:5.1.5.RELEASE'
+    
+
+}
+mainClassName='Tema.Client.StartClient'
+jar {
+    manifest {
+        attributes('Main-Class':'Tema.Client.StartClient')
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+}
