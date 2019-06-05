@@ -4,6 +4,8 @@ import Tema.Dommain.Artisti;
 import Tema.Dommain.Table;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
@@ -14,6 +16,7 @@ public class MyConcurrentServer extends ConcurrentServer {
         super(port);
     }
 
+    @Override
     protected Thread createWorker(Socket client) {
         Worker worker = new Worker(client);
         Thread tw = new Thread(worker);
@@ -34,7 +37,12 @@ public class MyConcurrentServer extends ConcurrentServer {
 
 
             try {
+                output = new ObjectOutputStream(client.getOutputStream());
+                output.flush();
+                input = new ObjectInputStream(client.getInputStream());
+
                 while (true) {
+
 
                     String option = (String) input.readObject();
 
@@ -64,6 +72,7 @@ public class MyConcurrentServer extends ConcurrentServer {
                                 output.flush();
                             }
                         }
+                     //   Thread.currentThread().sleep(100);
 
                     }
                     if (option.equals("cumparareFereastra1")) {
@@ -97,6 +106,7 @@ public class MyConcurrentServer extends ConcurrentServer {
                                 output.flush();
                             }
                         }
+                      //  Thread.currentThread().sleep(100);
 
                     }
                     if (option.equals("Search")) {
@@ -113,7 +123,7 @@ public class MyConcurrentServer extends ConcurrentServer {
                             output.writeObject(t);
                             output.flush();
                         }
-
+                    //    Thread.currentThread().sleep(100);
                     }
                     if (option.equals("cumparareFereastra2")) {
 
@@ -156,13 +166,15 @@ public class MyConcurrentServer extends ConcurrentServer {
                             output.writeObject(t);
                             output.flush();
                         }
-
+                   //     Thread.currentThread().sleep(100);
                     }
 
                     System.out.println("Finished  processing request ...");
-                    Thread.sleep(100);
 
                 }
+
+
+
 
             } catch (Exception e) {
                 System.out.println("Error in processing client request " + e);
@@ -175,7 +187,6 @@ public class MyConcurrentServer extends ConcurrentServer {
                     e.printStackTrace();
                 }
             }
-
 
         }
     }

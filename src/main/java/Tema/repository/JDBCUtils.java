@@ -13,7 +13,7 @@ public class JDBCUtils {
 
     private Connection getNewConnection(){
         logger.traceEntry();
-        String url ="jdbc:sqlite:F:\\Info\\SQLlite\\mydatabase.sqlite";
+        String url ="jdbc:sqlite:F:\\Info\\MPP\\mydatabase.sqlite";
         String driver = "org.sqlite.JDBC";
         logger.info("trying to connect to the database ... {}", url);
         Connection conn = null;

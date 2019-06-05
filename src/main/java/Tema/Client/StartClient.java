@@ -43,7 +43,7 @@ public class StartClient extends Application   {
 
 
 
-    public void start(Stage stage) throws Exception {
+    public synchronized void start(Stage stage) throws Exception {
 
 
         try {
@@ -287,13 +287,7 @@ public class StartClient extends Application   {
         });
 
 
-
-
-
         //I'm setting up the second scene
-
-
-
 
         window.show();
 

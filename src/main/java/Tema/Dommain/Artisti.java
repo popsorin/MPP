@@ -1,10 +1,13 @@
 package Tema.Dommain;
 
 
-public class Artisti{
+import java.io.Serializable;
+
+public class Artisti implements Serializable {
 
     private int id;
     private String nume;
+
 
 
     //constructor fara parametri

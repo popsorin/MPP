@@ -8,7 +8,7 @@
 
 <util:properties id="JDBCUtils">
         <prop key="driver">org.sqlite.JDBC</prop>
-        <prop key="url">jdbc:sqlite:F:\Info\SQLlite\mydatabase.db</prop>
+        <prop key="url">jdbc:sqlite:‪F:\Info\MPP\mydatabase.sqlite</prop>
     </util:properties>
 
     <bean id="RepoArtisti" class="Tema.repository.ArtistiJdbcRepository">

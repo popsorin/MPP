@@ -8,15 +8,18 @@ import Tema.Dommain.User;
 import Tema.repository.ILogin;
 import Tema.repository.IRepository;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Service {
+public class Service implements Serializable {
 
     private IRepository<Integer, Artisti> repoArtist;
     private IRepository<Integer, Spectacol> repoSpectacol;
     private ILogin<User> repoLogin;
+
+    public Service(){}
 
     public Service(IRepository<Integer,Artisti> repoA, IRepository<Integer,Spectacol> repoS,ILogin repoL){
 

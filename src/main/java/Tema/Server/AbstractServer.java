@@ -42,10 +42,9 @@ public abstract class AbstractServer {
         try{
             server=new ServerSocket(port);
             while(true){
+
                 System.out.println("Waiting for clients ...");
                 Socket client=server.accept();
-                output = new ObjectOutputStream(client.getOutputStream());
-                input = new ObjectInputStream(client.getInputStream());
                 System.out.println("Client connected ...");
                 processRequest(client);
 
@@ -63,13 +62,5 @@ public abstract class AbstractServer {
     }
 
     protected abstract  void processRequest(Socket client);
-    public void stop() throws ServerException{
-        try{
-            server.close();
-            input.close();
-            output.close();
-        } catch (IOException e) {
-            throw new ServerException("Closing server error ", e);
-        }
-    }
+
 }
